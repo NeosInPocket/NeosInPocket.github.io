@@ -61,7 +61,7 @@ h3{font-size:24px}
 .chips span{padding:5px 12px;border-radius:99px;background:#ffffff66}
 .device{justify-self:center;display:grid;gap:18px;justify-items:center}
 .phone{position:relative;width:min(270px,70vw);padding:9px;border-radius:40px;background:linear-gradient(145deg,#4a5540,#141a10);transform:rotate(2.5deg);box-shadow:inset 0 0 0 2px #78846a,0 12px 0 #2d8c3a,0 34px 40px -10px #14431c99}
-.phone img{display:block;width:100%;aspect-ratio:360/782;border-radius:31px}
+.phone video{display:block;width:100%;aspect-ratio:1242/2688;border-radius:31px;background:var(--grass)}
 .phone::before{content:"";position:absolute;top:18px;left:50%;width:64px;height:16px;transform:translateX(-50%);border-radius:10px;background:#11160d}
 figcaption{font-size:14px;font-weight:700}
 .edge{height:56px;background-repeat:repeat-x;background-size:360px 56px}
@@ -142,8 +142,8 @@ button{font:800 15px var(--body);padding:11px 18px;border:0;border-radius:12px;b
       <div class="chips"><span>Sole programmer on Letter Pop</span><span>Head Developer on Derailed</span><span>Minsk, UTC+3, remote</span></div>
     </div>
     <figure class="device">
-      <div class="phone"><img src="letterpop.gif" alt="Letter Pop gameplay: letter characters leave the board and fill the target words BARN and METRO" width="360" height="782"></div>
-      <figcaption>Letter Pop, recorded in Unity</figcaption>
+      <div class="phone"><video src="letterpop.mp4" poster="letterpop-poster.jpg" autoplay muted loop playsinline width="540" height="1169" aria-label="Letter Pop gameplay: letter characters leave the board and fill target words such as ACTOR and COOK"></video></div>
+      <figcaption>Letter Pop gameplay</figcaption>
     </figure>
   </div>
 </header>
