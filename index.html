@@ -1,20 +1,195 @@
----
-layout: default
----
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Bogdan Hancharou, Unity developer: Letter Pop, Derailed and earlier game projects.">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}</style>
+<title>Bogdan Hancharou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap">
+<style>
+/* Layout: the page is one Letter Pop level, from grass at the top down to sand, with a word tray for the name. */
+:root{
+  color-scheme:light;
+  --grass:#74e070;--grass-deep:#2f9e44;--sand:#fdeeb9;--sand-deep:#fbd08f;--tray:#ffd93b;--tray-edge:#efa91d;
+  --ink:#27331f;--ink-soft:#4c5a41;--paper:#fffdf2;--link:#176b2c;
+  --u1:#ff6b5e;--u2:#3cc8e0;--u3:#ffb02e;--u4:#ff7fc2;--u5:#7ed957;--u6:#ffd93b;
+  --display:"Lilita One","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --body:"Nunito Sans","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--sand)}
+body{background:var(--sand);color:var(--ink);font:400 17px/1.55 var(--body)}
+.band{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin-inline:auto}
+a{color:var(--link);font-weight:800;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,5vw,42px)}
+h3{font-size:24px}
+p{margin:0}
+.hero{background:var(--grass);padding-block:36px 44px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px 48px;align-items:center}
+.hero-text{display:grid;gap:22px;min-width:0}
+h1{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.trays{display:grid;gap:14px;justify-items:start}
+.tray{display:flex;gap:clamp(3px,1vw,8px);padding:clamp(5px,1.2vw,10px);background:var(--tray);border-radius:16px;box-shadow:0 6px 0 var(--tray-edge);max-width:100%}
+.unit{--c:var(--u1);position:relative;width:clamp(36px,8.2vw,70px);aspect-ratio:1;display:grid;place-items:center;background:var(--c);border-radius:42% 42% 34% 34%;color:#fff;font:400 clamp(21px,5vw,42px)/1 var(--display);-webkit-text-stroke:clamp(2px,.4vw,3px) var(--ink);paint-order:stroke fill;transition:transform .15s}
+.unit::after{content:"";position:absolute;bottom:9%;left:50%;width:32%;height:8%;transform:translateX(-50%);background:radial-gradient(circle at 12% 50%,var(--ink) 0 45%,transparent 48%) left/34% 100% no-repeat,radial-gradient(circle at 88% 50%,var(--ink) 0 45%,transparent 48%) right/34% 100% no-repeat}
+.unit:hover{transform:translateY(-5px) rotate(-4deg)}
+.lede{font-size:clamp(20px,2.6vw,25px);font-weight:700;line-height:1.3;max-width:27em}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-block;padding:12px 20px;background:var(--ink);color:var(--paper);border-radius:12px;text-decoration:none;font-weight:800}
+.btn.alt{background:var(--paper);color:var(--ink)}
+.phone{width:min(272px,100%);justify-self:center;border:8px solid var(--ink);border-radius:32px;overflow:hidden;background:var(--ink);box-shadow:0 10px 0 var(--grass-deep)}
+.phone img{display:block;width:100%;aspect-ratio:360/782}
+figcaption{font-size:14px;font-weight:700;text-align:center;margin-top:18px}
+section.band{padding-block:52px}
+.work{background:var(--sand)}
+.stack{display:grid;gap:30px}
+.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px}
+.feature-grid>div{display:grid;gap:4px;align-content:start;min-width:0}
+.feature-grid b{font-weight:800}
+.role{font-weight:700;color:var(--ink-soft)}
+.intro{display:grid;gap:10px;max-width:42em}
+.derailed{background:var(--ink);color:var(--paper)}
+.derailed .role{color:#d6e2c8}
+.derailed a{color:var(--grass)}
+.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.columns>div{display:grid;gap:10px;align-content:start;min-width:0}
+ul{margin:0;padding-left:20px;display:grid;gap:7px}
+.projects{background:var(--sand-deep)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{background:var(--paper);padding:24px;border-radius:18px;display:grid;gap:10px;align-content:start;min-width:0}
+.timeline{display:grid;gap:18px;margin:0}
+.timeline>div{display:grid;grid-template-columns:190px minmax(0,1fr);gap:4px 20px}
+dt{font-weight:800}
+dd{margin:0}
+.contact{background:var(--grass)}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;font-weight:800;font-size:18px}
+.mail{user-select:all;overflow-wrap:anywhere}
+button{font:800 15px var(--body);padding:9px 15px;border:0;border-radius:10px;background:var(--ink);color:var(--paper);cursor:pointer}
+.dr-top{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:36px;align-items:center}
+.dr-video{display:block;width:100%;height:auto;aspect-ratio:9/16;border-radius:18px;background:#000}
+.derailed .intro{gap:14px}
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.shots figure{margin:0;display:grid;gap:8px;min-width:0}
+.shots img{display:block;width:100%;height:auto;border-radius:12px}
+.shots figcaption{margin:0;text-align:left;font-weight:400;color:#d6e2c8}
+@media (max-width:760px){
+  .dr-top,.shots{grid-template-columns:minmax(0,1fr)}
+  .dr-video{max-width:300px;justify-self:center}
+  .hero .wrap,.feature-grid,.columns,.cards{grid-template-columns:minmax(0,1fr)}
+  .timeline>div{grid-template-columns:minmax(0,1fr)}
+  section.band{padding-block:40px}
+}
+@media (prefers-reduced-motion:reduce){.unit{transition:none}.unit:hover{transform:none}}
+</style>
 
-<div class="row">
-	<div class="col-md-9 rightBorder">
-		{% include section_intro.html %}
-		{% include section_skills.html %}
-		{% include section_workexperience.html %}
-		{% include section_coursera.html %}
-		{% include section_github.html %}
-		{% include section_mobileapps.html %}
-		{% include section_additionalinfo.html %}
-		{% include section_speakerdeck.html %}
-	</div>
-	<div class="col-md-3">
-		{% include section_stackoverflow.html %}
-		{% include section_blogs.html %}
-	</div>
-</div>
+</head>
+<body>
+<header class="hero band">
+  <div class="wrap">
+    <div class="hero-text">
+      <h1>Bogdan Hancharou</h1>
+      <div class="trays" aria-hidden="true">
+        <div class="tray"><span class="unit" style="--c:var(--u1)">B</span><span class="unit" style="--c:var(--u2)">O</span><span class="unit" style="--c:var(--u3)">G</span><span class="unit" style="--c:var(--u4)">D</span><span class="unit" style="--c:var(--u5)">A</span><span class="unit" style="--c:var(--u2)">N</span></div>
+      </div>
+      <p class="lede">Bogdan Hancharou, Unity developer. I build gameplay systems in C#, tools for designers, and games that reach the store.</p>
+      <div class="actions">
+        <a class="btn" href="https://github.com/NeosInPocket/Word-Blocks-Jam">See Letter Pop code</a>
+        <a class="btn alt" href="https://github.com/NeosInPocket">GitHub profile</a>
+      </div>
+    </div>
+    <figure style="margin:0">
+      <div class="phone"><img src="letterpop.gif" alt="Letter Pop gameplay: letter characters leave the board and fill the target words BARN and METRO" width="360" height="782"></div>
+      <figcaption>Letter Pop, recorded in Unity</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+  <section class="work band" aria-labelledby="lp">
+    <div class="wrap stack">
+      <div class="intro">
+        <h2 id="lp">Letter Pop: Fun Word Puzzle</h2>
+        <p class="role">Sole programmer. Unity, iOS and Android. July to October 2025, SnapJoy Games.</p>
+        <p>Players pull letter characters off a board to spell target words before the holding tray fills up. I wrote all the game code. A game designer built the levels, and an artist handled art, VFX and UI layout.</p>
+      </div>
+      <div class="feature-grid">
+        <div><b>Gameplay</b><p>Board, letter units and navigation, word completion, dispensers and pipes, boosters, and a tutorial.</p></div>
+        <div><b>Level tools</b><p>A custom level editor and pipe editor, so the designer could build levels without code.</p></div>
+        <div><b>Systems</b><p>Level generation from the GDD, saves, audio, haptics, menus, and a small MVVM layer for UI.</p></div>
+        <div><b>Release</b><p>Store builds, A/B tests and optimization, with AppsFlyer, AppMetrica, Facebook, Adjust and AppLovin MAX integrated.</p></div>
+      </div>
+      <p><a href="https://github.com/NeosInPocket/Word-Blocks-Jam">Read the code on GitHub</a></p>
+    </div>
+  </section>
+
+  <section class="derailed band" aria-labelledby="dr">
+    <div class="wrap stack">
+      <div class="dr-top">
+        <video class="dr-video" src="derailed.mp4" poster="derailed-poster.jpg" autoplay muted loop playsinline controls width="540" height="960" aria-label="Derailed: a steam locomotive arrives at a dark station platform"></video>
+        <div class="intro">
+          <h2 id="dr">Derailed</h2>
+          <p class="role">Head Developer and Project Manager. Unity 6, URP, PC. In development since December 2025.</p>
+          <p>A story-driven, single-player sim with body horror. The player is an occult doctor on a hospital train, crossing a country torn by war and a supernatural epidemic. At each station you diagnose occult illnesses and operate through tactile mini-games.</p>
+          <p>I lead the team and the technical direction at <a href="https://www.snapjoygames.com/">SnapJoy Games</a>, where the team page lists me as Bogdan Goncharov. Since the October 2026 rebuild, gameplay code is written with Claude Code under my direction and review.</p>
+        </div>
+      </div>
+      <div class="shots">
+        <figure><img src="derailed-linecut.jpg" alt="Line Cut treatment step: a scalpel follows a dashed path on a patient's leg, with a nine-step treatment list on screen" loading="lazy" width="1400" height="733"><figcaption>Treatment flow: the Line Cut step, first of nine, from incision to bandage.</figcaption></figure>
+        <figure><img src="derailed-symptom.jpg" alt="ExtraEye symptom: an eye grows from a patient's skinned arm, shown half textured and half as wireframe" loading="lazy" width="1400" height="733"><figcaption>ExtraEye symptom spawned at runtime on the patient rig.</figcaption></figure>
+      </div>
+      <div class="columns">
+        <div><h3>Team</h3><ul><li>Lead programmers, 3D artists, an art lead and narrative designers.</li><li>Took over the art department in May 2026.</li><li>Helped hire and onboard 8 specialists.</li></ul></div>
+        <div><h3>Processes</h3><ul><li>Introduced daily stand-ups, sprints from team estimates and Jira task rules.</li><li>Built the art pipeline, from briefs to work acceptance.</li><li>Set up a branch and PR workflow and Windows and macOS CI builds.</li><li>Wrote test cases and verified builds.</li></ul></div>
+        <div><h3>Gameplay</h3><ul><li>Directed a nine-step tactile surgery system built on a shared input and gesture pipeline.</li><li>Defined a modular architecture on VContainer scopes with no static state.</li><li>Cut main-thread audio loading from 348 ms to 1 ms across 349 clips.</li><li>In the earlier project version, built the player module, menus, saves and key rebinding in C#.</li><li>Designed the core loop and the treatment and exorcism mechanics.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects band" aria-labelledby="more">
+    <div class="wrap stack">
+      <h2 id="more">Earlier projects</h2>
+      <div class="cards">
+        <article class="card"><h3>DuelArena</h3><p>An online 1v1 mobile duel I built alone with Photon PUN: matchmaking, rooms, touch controls and networked fireballs.</p><p><a href="https://github.com/NeosInPocket/DuelArena">View on GitHub</a></p></article>
+        <article class="card"><h3>Stranger</h3><p>A 2D action RPG made by a team of three. I worked mainly on the player controller, enemies and the boss fight.</p><p><a href="https://github.com/NeosInPocket/Stranger-Game-Unity">View on GitHub</a></p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="work band" aria-labelledby="xp">
+    <div class="wrap stack">
+      <h2 id="xp">Experience</h2>
+      <dl class="timeline">
+        <div><dt>Dec 2025 to now</dt><dd><b>Head Developer / Project Manager</b>, SnapJoy Games</dd></div>
+        <div><dt>Jul to Dec 2025</dt><dd><b>Unity Developer</b>, SnapJoy Games</dd></div>
+        <div><dt>Apr 2024 to May 2025</dt><dd><b>Unity Developer</b>, KnotGames: 3D hyper-casual games</dd></div>
+        <div><dt>Education</dt><dd><b>Physics</b>, Belarusian State University</dd></div>
+        <div><dt>Stack</dt><dd>Unity, C#, VContainer, Zenject, Photon, Unity Profiler, Git, GitHub Actions, Jira, Claude Code</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="contact band" style="padding-block:44px">
+  <div class="wrap stack" style="gap:16px">
+    <h2>Get in touch</h2>
+    <div class="contact-row">
+      <span class="mail" id="mail">fortpost197080@gmail.com</span>
+      <button type="button" id="copy">Copy email</button>
+      <span>Minsk, Belarus (UTC+3). Remote.</span>
+    </div>
+  </div>
+</footer>
+<script>
+document.getElementById('copy').addEventListener('click',async e=>{
+  const b=e.currentTarget;
+  try{await navigator.clipboard.writeText('fortpost197080@gmail.com');b.textContent='Copied'}
+  catch{const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Press Ctrl+C'}
+});
+</script>
+</body>
+</html>
